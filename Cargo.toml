@@ -15,9 +15,11 @@ edition = "2018"
 coveralls = {repository = "sile/erl_parse"}
 
 [dependencies]
-erl_pp = "0.1"
-erl_tokenize = "0.3"
-num = "0.2"
+# erl_pp = "0.1"
+erl_pp = { path = "../erl_pp" }
+# erl_tokenize = "0.3"
+erl_tokenize = { path = "../erl_tokenize" }
+num = ">= 0.4"
 trackable = "0.2"
 
 [dev-dependencies]

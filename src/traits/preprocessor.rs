@@ -13,7 +13,7 @@ impl<'a> Preprocessor for &'a mut dyn Preprocessor {
         (*self).undef_macro(name);
     }
 }
-impl<'a, T, E> Preprocessor for &'a mut erl_pp::Preprocessor<T, E> {
+impl<'a, T> Preprocessor for &'a mut erl_pp::Preprocessor<T> {
     fn define_macro(&mut self, name: &str, replacement: Vec<LexicalToken>) {
         (*self).define_macro(name, replacement);
     }
@@ -21,7 +21,7 @@ impl<'a, T, E> Preprocessor for &'a mut erl_pp::Preprocessor<T, E> {
         (*self).undef_macro(name);
     }
 }
-impl<T, E> Preprocessor for erl_pp::Preprocessor<T, E> {
+impl<T> Preprocessor for erl_pp::Preprocessor<T> {
     fn define_macro(&mut self, name: &str, replacement: Vec<LexicalToken>) {
         self.macros_mut()
             .insert(name.to_string(), MacroDef::Dynamic(replacement));
